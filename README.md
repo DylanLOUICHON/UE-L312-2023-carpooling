@@ -6,3 +6,5 @@ Ce projet est utilisé dans le cadre de l'UE L312 de notre formation, en Licence
 ### 🤝 Contributeurs
 Dylan Louichon (📧 dylan.louichon@etu.unilim.fr)<br>
 Ammar Al Husan (📧 ammar.al@etu.unilim.fr)
+
+Nous vous souhaitons une très bonne lecture 
