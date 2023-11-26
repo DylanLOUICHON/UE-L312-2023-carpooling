@@ -16,12 +16,12 @@ class Car
 
 
     // Identifier
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
