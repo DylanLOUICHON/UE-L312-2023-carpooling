@@ -1,10 +1,15 @@
 <?php
 
-$reservationControler = new ReservationsController();
-echo $reservationControler->updateReservation();
+  use App\Controllers\ReservationsController;
+
+  require __DIR__ . '/vendor/autoload.php';
+
+  $reservationControler = new ReservationsController();
+  echo $reservationControler->updateReservation();
 ?>
+
 <p>Création d'une reservation</p>
-<form method="post" action="Car_create.php" name="Reservation_update_form">
+<form method="post" action="reservation_update.php" name="reservationUpdateForm">
   <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
   <label for="idAnnonce">id Annonce :</label>

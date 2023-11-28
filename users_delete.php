@@ -1,11 +1,11 @@
 <?php
 
-use App\Controllers\UsersController;
+    use App\Controllers\UsersController;
 
-require __DIR__ . '/vendor/autoload.php';
+    require __DIR__ . '/vendor/autoload.php';
 
-$controller = new UsersController();
-echo $controller->deleteUser();
+    $controller = new UsersController();
+    echo $controller->deleteUser();
 ?>
 
 <p>Supression d'un utilisateur</p>

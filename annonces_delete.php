@@ -1,13 +1,15 @@
 <?php
-// Cette classe sert à supprimer des annonces.
-require_once '/AnnoncesController.php';
 
-//Utilisation de la classe 
-$annonceController = new AnnoncesController();
-echo $annonceController->deleteAnnonce();
+    use App\Controllers\AnnoncesController;
+
+    require __DIR__ . '/vendor/autoload.php';
+     
+    $annonceController = new AnnoncesController();
+    echo $annonceController->deleteAnnonce();
 ?>
+
 <p> Suppression d'une annonce </p>
-<form method="post" action="Annonces_delete.php" name="AnnonceDeleteForm">
+<form method="post" action="Annonces_delete.php" name="annonceDeleteForm">
     <label for="id">Id :</label>
     <input type="text" name="id">
     <br />

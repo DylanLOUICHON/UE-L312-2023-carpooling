@@ -1,11 +1,11 @@
 <?php
 
-use App\Controllers\UsersController;
+    use App\Controllers\UsersController;
 
-require __DIR__ . '/vendor/autoload.php';
+    require __DIR__ . '/vendor/autoload.php';
 
-$controller = new UsersController();
-echo $controller->createUser();
+    $controller = new UsersController();
+    echo $controller->createUser();
 ?>
 
 <p>Création d'un utilisateur</p>

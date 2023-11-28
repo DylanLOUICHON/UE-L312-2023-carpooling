@@ -1,15 +1,15 @@
 <?php
-// Cette classe sert à mettre à jour les annonces.
 
-require_once '/AnnoncesController.php';
+    use App\Controllers\AnnoncesController;
 
+    require __DIR__ . '/vendor/autoload.php';
 
-$annonceController = new AnnoncesController();
-echo $annonceController->updateAnnonce();
+    $annonceController = new AnnoncesController();
+    echo $annonceController->updateAnnonce();
 ?>
 
 <p> Mettre à jour une annonce </p>
-<form method="post" action="Annonces_update.php" name="Annonces_update_form">
+<form method="post" action="annonces_update.php" name="annoncesUpdateForm">
 
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 

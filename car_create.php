@@ -1,16 +1,17 @@
 <?php
-// Cette classe sert à créer des voitures.
-require_once '/CarsController.php';
+
+    use App\Controllers\CarsController;
+
+    require __DIR__ . '/vendor/autoload.php';
+    
+    $carController = new CarsController();
+    echo $carController->createCar();
 
 
-//L'utilisation de cette classe 
-$carController = new CarsController();
-echo $carController->createCar();
-
-echo '<p>Création d\'une voiture</p>';
 ?>
 
-<form method="post" action="Car_create.php" name="Car_create_form">
+<p> Création d'une voiture </p>
+<form method="post" action="car_create.php" name="carCreateForm">
 
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque voiture -->
 

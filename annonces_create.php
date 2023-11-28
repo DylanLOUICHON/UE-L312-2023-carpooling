@@ -1,13 +1,16 @@
 <?php
-// Cette classe sert à créer des annonces.
-require_once '/AnnoncesController.php';
 
-// Utilisation incorrecte du nom de classe (AnnoncesController au lieu de AnnonceController)
-$annonceController = new AnnoncesController();
-echo $annonceController->createAnnonce();
+    use App\Controllers\AnnoncesController;
+
+    require __DIR__ . '/vendor/autoload.php';
+
+    
+    $annonceController = new AnnoncesController();
+    echo $annonceController->createAnnonce();
 ?>
+
 <p> Création d'une annonce </p>
-<form method="post" action="Annonces_create.php" name="Annonces_create_form">
+<form method="post" action="annonces_create.php" name="annonceCreateForm">
     
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 

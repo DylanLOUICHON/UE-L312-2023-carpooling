@@ -1,8 +1,8 @@
 <?php
 
-//Cette classe sert à réaliser la lecture des voitrues. 
-require_once '/CarsController.php';
+    use App\Controllers\CarsController;
 
-// Utilisation de la classe CarsController
-$carController = new CarsController();
-echo $carController->getCars();
+    require __DIR__ . '/vendor/autoload.php';
+
+    $carController = new CarsController();
+    echo $carController->getCars();

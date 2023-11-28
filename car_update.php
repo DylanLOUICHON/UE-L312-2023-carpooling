@@ -1,14 +1,14 @@
 <?php
-// Cette classe sert à mettre à jour des voitures
-require_once '/CarsController.php';
 
+    use App\Controllers\CarsController;
 
-//Utilisation 
-$carController = new CarsController();
-echo $carController->updateCar();
+    require __DIR__ . '/vendor/autoload.php';
 
+    $carController = new CarsController();
+    echo $carController->updateCar();
 ?>
-<form method="post" action="Car_create.php" name="Car_create_form">
+
+<form method="post" action="car_update.php" name="carCreateForm">
 
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque voiture -->
 

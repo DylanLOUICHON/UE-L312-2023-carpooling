@@ -1,10 +1,15 @@
 <?php
-require_once '/ReservationsController.php';
-$reservationControler = new ReservationsController();
-echo $reservationControler->createReservation();
+
+  use App\Controllers\ReservationsController;
+
+  require __DIR__ . '/vendor/autoload.php';
+
+  $reservationControler = new ReservationsController();
+  echo $reservationControler->createReservation();
 ?>
+
 <p>Création d'une reservation</p>
-<form method="post" action="Car_create.php" name="Reservation_create_form">
+<form method="post" action="reservation_create.php" name="reservationCreateForm">
 
   <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
