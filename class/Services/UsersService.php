@@ -129,12 +129,12 @@ class UsersService
     /**
      * Create relation bewteen an user and his annonces.
      */
-    public function setUserAnnonces(string $userId, string $annonceId): bool
+    public function setUserAnnonce(string $userId, string $annonceId): bool
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
-        $isOk = $dataBaseService->setUserAnnonces($userId, $annonceId);
+        $isOk = $dataBaseService->setUserAnnonce($userId, $annonceId);
 
         return $isOk;
     }
@@ -171,12 +171,12 @@ class UsersService
     /**
      * Create relation bewteen an user and his reservations.
      */
-    public function setUserReservations(string $userId, string $reservationId): bool
+    public function setUserReservation(string $userId, string $reservationId): bool
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
-        $isOk = $dataBaseService->setUserReservations($userId, $reservationId);
+        $isOk = $dataBaseService->setUserReservation($userId, $reservationId);
 
         return $isOk;
     }
