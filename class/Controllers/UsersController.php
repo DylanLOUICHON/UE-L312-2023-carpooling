@@ -80,33 +80,47 @@ class UsersController
             $carsHtml = '';
             if (!empty($user->getCars())) {
                 foreach ($user->getCars() as $car) {
-                    $carsHtml .= $car->getBrand() . ' ' . $car->getModel() . ' ' . $car->getYear() . ' ' . $car->getColor() . ' ' . $car->getMotorization() . ' ' . $car->getPlacesNumber() . ' ' . $car->getNumberplate();
+                    $carsHtml .= 'Marque : '. $car->getBrand() . '<br/> Modèle : ' . $car->getModel() . '<br/> Année : ' . $car->getYear() . '<br/> Couleur : ' . $car->getColor() . '<br/> Motorisation : ' . $car->getMotorization() . '<br/> Nombre de places : ' . $car->getPlacesNumber() . '<br/> Immatriculation : ' . $car->getNumberplate() . '<br/><br/>';
                 }
             }
+
 
             $annoncesHtml = '';
             if (!empty($user->getAnnonces())) {
                 foreach ($user->getAnnonces() as $annonce) {
-                    $annoncesHtml .= $annonce->getPrice() . ' ' . $annonce->getStartPlace() . ' ' . $annonce->getEndPlace() . ' ' . $annonce->getDateBegining() . ' ' . $annonce->getSmoking();
+                    $smoking = 'Non';
+                    if ($annonce->getSmoking() == 1){
+                        $smoking = 'Oui';
+                    }
+
+
+                    $annoncesHtml .= 'Prix : ' . $annonce->getPrice() . '€ <br/> Lieu de départ : ' . $annonce->getStartPlace() . '<br/> Lieu d\'arrivé : ' . $annonce->getEndPlace() . '<br/> Date de départ : ' . $annonce->getDateBegining()->format('d m Y') . '<br/> Heure de départ : ' . $annonce->getDateBegining()->format('H:i:s') . '<br/> Cigarettes autorisées : ' . $smoking . '<br/>';
                 }
             }
+
 
             $reservationsHtml = '';
             if (!empty($user->getReservations())) {
                 foreach ($user->getReservations() as $reservation) {
-                    $reservationsHtml .= $reservation->getDateTimeReservation();
+                    $reservationsHtml .= $reservation->getDateTimeReservation()->format('Y-m-d H:i:s');
                 }
             }
 
+
             $html .=
-                '#' . $user->getId() . ' ' .
+                '<h1>Utilisateur #' . $user->getId() . '</h1>' .
+                '<h3>Informations personnelles :</h3>' .
                 $user->getFirstname() . ' ' .
-                $user->getLastname() . ' ' .
-                $user->getEmail() . ' ' .
-                $user->getBirthday()->format('d-m-Y') . ' ' .
-                $carsHtml . ' ' .
-                $annoncesHtml . ' ' .
-                $reservationsHtml . '<br />';
+                $user->getLastname() . '<br/>' .
+                'Adresse email : ' . $user->getEmail() . '<br/>' .
+                'Date de naissance : ' . $user->getBirthday()->format('d m Y') . '<br/>' .
+                '<h3>Voiture(s) personnelle(s) :</h3>' .
+                $carsHtml . '<br/>' .
+                '<h3>Annonce(s) personnelle(s) :</h3>' .
+                $annoncesHtml . '<br/>' .
+                '<h3>Réservation(s) personnelle(s) :</h3>' .
+                $reservationsHtml . '<br />' .
+                '<br/><hr>';
         }
 
         return $html;

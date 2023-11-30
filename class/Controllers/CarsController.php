@@ -85,7 +85,7 @@ class CarsController
             isset($_POST['numberplate'])) {
             // Update the car :
             $carsService = new CarsService();
-            $isOk = $carsService->setCars(
+            $isOk = $carsService->setCar(
                 $_POST['brand'],
                 $_POST['model'],
                 $_POST['year'],

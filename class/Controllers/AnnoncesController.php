@@ -79,7 +79,7 @@ class AnnoncesController
             isset($_POST['smoking'])) {
             // Update the annonce :
             $annoncesService = new AnnoncesService();
-            $isOk = $annoncesService->setAnnonces(
+            $isOk = $annoncesService->setAnnonce(
                 $_POST['id'],
                 $_POST['price'],
                 $_POST['startPlace'],
