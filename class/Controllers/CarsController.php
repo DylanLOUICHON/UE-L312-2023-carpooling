@@ -20,7 +20,7 @@ class CarsController
             isset($_POST['color']) &&
             isset($_POST['motorization']) &&
             isset($_POST['placesNumber']) &&
-            isset($_POST['numberplate'])) {
+            isset($_POST['numberPlate'])) {
             // Create the car :
             $carsService = new CarsService();
             $isOk = $carsService->setCar(
@@ -31,7 +31,7 @@ class CarsController
                 $_POST['color'],
                 $_POST['motorization'],
                 $_POST['placesNumber'],
-                $_POST['numberplate']
+                $_POST['numberPlate']
             );
             if ($isOk) {
                 $html = 'Voiture créé avec succès.';
@@ -82,17 +82,18 @@ class CarsController
             isset($_POST['color']) &&
             isset($_POST['motorization']) &&
             isset($_POST['placesNumber']) &&
-            isset($_POST['numberplate'])) {
+            isset($_POST['numberPlate'])) {
             // Update the car :
             $carsService = new CarsService();
             $isOk = $carsService->setCar(
+                $_POST['id'],
                 $_POST['brand'],
                 $_POST['model'],
                 $_POST['year'],
                 $_POST['color'],
                 $_POST['motorization'],
                 $_POST['placesNumber'],
-                $_POST['numberplate']
+                $_POST['numberPlate']
             );
             if ($isOk) {
                 $html = 'Voiture mise à jour avec succès.';

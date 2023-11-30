@@ -9,7 +9,7 @@
 ?>
 
 <p>Création d'une reservation</p>
-<form method="post" action="reservation_update.php" name="reservationUpdateForm">
+<form method="post" action="reservations_update.php" name="reservationUpdateForm">
   <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
   <label for="idAnnonce">id Annonce :</label>

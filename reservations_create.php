@@ -9,7 +9,7 @@
 ?>
 
 <p>Création d'une reservation</p>
-<form method="post" action="reservation_create.php" name="reservationCreateForm">
+<form method="post" action="reservations_create.php" name="reservationCreateForm">
 
   <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 

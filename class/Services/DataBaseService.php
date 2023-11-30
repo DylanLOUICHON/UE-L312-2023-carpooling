@@ -47,7 +47,6 @@ class DataBaseService
         $query = $this->connection->prepare($sql);
         $isOk = $query->execute($data);
 
-        $isOk = $query->execute($data);
         if ($isOk) {
             $userId = $this->connection->lastInsertId();
         }
@@ -198,22 +197,26 @@ class DataBaseService
      */
     public function createCar(string $brand, string $model, string $year, string $color, string $motorization, int $placesNumber, string $numberplate): bool
     {
-        $isOk = false;
+        $carId = '';
 
         $data = [
             'brand' => $brand,
             'model' => $model,
-            'yearCar' => $year,
+            'year' => $year,
             'color' => $color,
             'motorization' => $motorization,
             'placesNumber' => $placesNumber,
             'numberplate' => $numberplate
         ];
-        $sql = 'INSERT INTO cars (brand, model, yearCar, color, motorization, placesNumber, numberplate) VALUES (:brand, :model, :yearCar, :color, :motorization, :placesNumber, :numberplate)';
+        $sql = 'INSERT INTO cars (brand, model, year, color, motorization, placesNumber, numberplate) VALUES (:brand, :model, :year, :color, :motorization, :placesNumber, :numberplate)';
         $query = $this->connection->prepare($sql);
         $isOk = $query->execute($data);
 
-        return $isOk;
+        if ($isOk) {
+            $carId = $this->connection->lastInsertId();
+        }
+
+        return $carId;
     }
 
 
@@ -248,13 +251,13 @@ class DataBaseService
             'id' => $id,
             'brand' => $brand,
             'model' => $model,
-            'yearCar' => $year,
+            'year' => $year,
             'color' => $color,
             'motorization' => $motorization,
             'placesNumber' => $placesNumber,
             'numberplate' => $numberplate
         ];
-        $sql = 'UPDATE cars SET brand = :brand, model = :model, year = :yearCar, color = :color, motorization = :motorization, placesNumber = :placesNumber, numberplate = :numberplate WHERE id = :id;';
+        $sql = 'UPDATE cars SET brand = :brand, model = :model, year = :year, color = :color, motorization = :motorization, placesNumber = :placesNumber, numberplate = :numberplate WHERE id = :id;';
         $query = $this->connection->prepare($sql);
         $isOk = $query->execute($data);
 

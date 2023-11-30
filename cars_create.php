@@ -3,12 +3,15 @@
     use App\Controllers\CarsController;
 
     require __DIR__ . '/vendor/autoload.php';
-
+    
     $carController = new CarsController();
-    echo $carController->updateCar();
+    echo $carController->createCar();
+
+
 ?>
 
-<form method="post" action="car_update.php" name="carCreateForm">
+<p> Création d'une voiture </p>
+<form method="post" action="cars_create.php" name="carCreateForm">
 
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque voiture -->
 

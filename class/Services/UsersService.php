@@ -19,7 +19,10 @@ class UsersService
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
-        $birthdayDateTime = new DateTime($birthday);
+        $birthdayString = $birthday;
+        $format = "Y-m-d";
+        $birthdayDateTime = DateTime::createFromFormat($format, $birthdayString);
+
         if (empty($id)) {
             $isOk = $dataBaseService->createUser($firstname, $lastname, $email, $birthdayDateTime);
         } else {

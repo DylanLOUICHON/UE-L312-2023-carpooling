@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\UsersService;
+use DateTime;
 
 class UsersController
 {
@@ -17,18 +18,16 @@ class UsersController
         if (isset($_POST['firstname']) &&
             isset($_POST['lastname']) &&
             isset($_POST['email']) &&
-            isset($_POST['birthday']) &&
-            isset($_POST['cars']) &&
-            isset($_POST['annonces']) &&
-            isset($_POST['reservations'])) {
+            isset($_POST['birthday'])) {
             // Create the user :
             $usersService = new UsersService();
+            $dateBirthday = new DateTime($_POST['birthday']);
             $userId = $usersService->setUser(
                 null,
                 $_POST['firstname'],
                 $_POST['lastname'],
                 $_POST['email'],
-                $_POST['birthday']
+                $dateBirthday->format('Y-m-d') . ' 00:00:00'
             );
 
             // Create the user cars relations :

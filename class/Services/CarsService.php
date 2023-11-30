@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Entities\Car;
-use DateTime;
 
 class CarsService 
 {
@@ -11,15 +10,15 @@ class CarsService
     /**
      * Create or update a car.
      */
-    public function setCar(?string $id, string $brand, string $model, string $year, string $motorization, int $placesNumber, string $numberPlate): bool
+    public function setCar(?string $id, string $brand, string $model, string $year, string $color, string $motorization, int $placesNumber, string $numberPlate): bool
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
         if (empty($id)) {
-            $isOk = $dataBaseService->createCar($brand, $model, $year, $motorization, $placesNumber, $numberPlate);
+            $isOk = $dataBaseService->createCar($brand, $model, $year, $color, $motorization, $placesNumber, $numberPlate);
         } else {
-            $isOk = $dataBaseService->updateCar($id, $brand, $model, $year, $motorization, $placesNumber, $numberPlate);
+            $isOk = $dataBaseService->updateCar($id, $brand, $model, $year, $color, $motorization, $placesNumber, $numberPlate);
         }
         return $isOk;
     }

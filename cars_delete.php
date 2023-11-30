@@ -8,7 +8,7 @@
     echo $carController->deleteCar();
 ?>
 <p> Suppression d'une voiture </p>
-<form method="post" action="car_delete.php" name="CarDeleteForm">
+<form method="post" action="cars_delete.php" name="CarDeleteForm">
     <label for="id">Id :</label>
     <input type="text" name="id">
     <br />
