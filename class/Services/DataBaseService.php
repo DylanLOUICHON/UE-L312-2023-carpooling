@@ -133,6 +133,25 @@ class DataBaseService
         return $isOk;
     }
 
+
+    /**
+     * Return all annonces.
+     */
+    public function getAnnonces(): array
+    {
+        $annonces = [];
+
+        $sql = 'SELECT * FROM annonces';
+        $query = $this->connection->query($sql);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($results)) {
+            $annonces = $results;
+        }
+
+        return $annonces;
+    }
+
+
     /**
      * Update an annonce.
      */
@@ -196,6 +215,27 @@ class DataBaseService
         return $isOk;
     }
 
+
+
+    /**
+     * Return all cars.
+     */
+    public function getCars(): array
+    {
+        $cars = [];
+
+        $sql = 'SELECT * FROM cars';
+        $query = $this->connection->query($sql);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($results)) {
+            $cars = $results;
+        }
+
+        return $cars;
+    }
+
+
+
     /**
      * Update a car.
      */
@@ -254,6 +294,25 @@ class DataBaseService
 
         return $isOk;
     }
+
+    
+    /**
+     * Return all reservations.
+     */
+    public function getReservations(): array
+    {
+        $reservations = [];
+
+        $sql = 'SELECT * FROM reservations';
+        $query = $this->connection->query($sql);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($results)) {
+            $reservations = $results;
+        }
+
+        return $reservations;
+    }
+
 
     /**
      * Update a reservation.
