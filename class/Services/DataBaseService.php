@@ -155,11 +155,12 @@ class DataBaseService
     /**
      * Update an annonce.
      */
-    public function updateAnnonce(string $price, string $startPlace, string $endPlace, DateTime $dateBegining, bool $smoking): bool
+    public function updateAnnonce(string $id, string $price, string $startPlace, string $endPlace, DateTime $dateBegining, bool $smoking): bool
     {
         $isOk = false;
 
         $data = [
+            'id' => $id,
             'price' => $price,
             'startPlace' => $startPlace,
             'endPlace' => $endPlace,
@@ -239,11 +240,12 @@ class DataBaseService
     /**
      * Update a car.
      */
-    public function updateCar(string $brand, string $model, string $year, string $color, string $motorization, int $placesNumber, string $numberplate): bool
+    public function updateCar(string $id, string $brand, string $model, string $year, string $color, string $motorization, int $placesNumber, string $numberplate): bool
     {
         $isOk = false;
 
         $data = [
+            'id' => $id,
             'brand' => $brand,
             'model' => $model,
             'yearCar' => $year,
@@ -317,11 +319,12 @@ class DataBaseService
     /**
      * Update a reservation.
      */
-    public function updateReservation(DateTime $dateTimeReservation): bool
+    public function updateReservation(string $id, DateTime $dateTimeReservation): bool
     {
         $isOk = false;
 
         $data = [
+            'id' => $id,
             'dateTimeReservation' => $dateTimeReservation
         ];
         $sql = 'UPDATE reservations SET dateTimeReservation = :dateTimeReservation WHERE id = :id;';

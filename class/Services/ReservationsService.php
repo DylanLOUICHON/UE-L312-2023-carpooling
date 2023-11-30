@@ -3,16 +3,17 @@
 namespace App\Services;
 
 use App\Entities\Reservation;
+
 use DateTime;
 
 
-class ReservationService
+class ReservationsService
 {
 
     /**
      * Create or update a reservation.
      */
-    public function setReservation(?string $id, $dateTimeReservation): bool
+    public function setReservation(?string $idUser, string $dateTimeReservation): bool
     {
         $isOk = false;
 
@@ -21,7 +22,7 @@ class ReservationService
         if (empty($id)) {
             $isOk = $dataBaseService->createReservation($reservationDateTime);
         } else {
-            $isOk = $dataBaseService->updateReservation($id, $reservationDateTime);
+            $isOk = $dataBaseService->updateReservation($idUser, $reservationDateTime);
         }
 
         return $isOk;
@@ -56,7 +57,7 @@ class ReservationService
     /**
      * Delete a reservation.
      */
-    public function deleteReservations(string $id): bool
+    public function deleteReservation(string $id): bool
     {
         $isOk = false;
 

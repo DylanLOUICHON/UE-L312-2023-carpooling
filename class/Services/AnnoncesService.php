@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Entities\Annonce;
 use DateTime;
 
-class AnnonceService
+class AnnoncesService
 {
 
     /**
