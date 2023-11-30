@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Entities\Annonce;
 use App\Entities\Car;
 use App\Entities\User;
+use App\Entities\Reservation;
+
 use DateTime;
 
 class UsersService
@@ -157,8 +159,12 @@ class UsersService
                 $annonce->setPrice($userAnnoncesDTO['price']);
                 $annonce->setStartPlace($userAnnoncesDTO['startPlace']);
                 $annonce->setEndPlace($userAnnoncesDTO['endPlace']);
-                $annonce->setDateBegining($userAnnoncesDTO['dateBegining']);
+                $date = new DateTime($userAnnoncesDTO['dateBegining']);
+                if ($date !== false) {
+                    $annonce->setDateBegining($date);
+                }
                 $annonce->setSmoking($userAnnoncesDTO['smoking']);
+
                 $userAnnonces[] = $annonce;
             }
         }
@@ -194,9 +200,14 @@ class UsersService
         $usersReservationsDTO = $dataBaseService->getUserReservations($userId);
         if (!empty($usersReservationsDTO)) {
             foreach ($usersReservationsDTO as $userReservationsDTO) {
-                $reservation = new Annonce();
+                $reservation = new Reservation();
+                
                 $reservation->setId($userReservationsDTO['id']);
-                $reservation->setDateBegining($userReservationsDTO['dateTimeReservation']);
+                $date = new DateTime($userReservationsDTO['dateTimeReservation']);
+                if ($date !== false) {
+                    $reservation->setDateTimeReservation($date);
+                }
+
                 $userReservations[] = $reservation;
             }
         }
