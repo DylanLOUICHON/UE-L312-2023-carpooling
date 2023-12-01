@@ -27,7 +27,7 @@
     <br/>
         
     <label for="dateBegining">date Begining : </label> 
-    <input type="date" name="dateBegining">
+    <input type="datetime-local" name="dateBegining">
     <br/>
         
     <label for="smoking">smoking :</label>

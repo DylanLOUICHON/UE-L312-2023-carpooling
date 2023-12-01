@@ -20,7 +20,7 @@ class UsersService
 
         $dataBaseService = new DataBaseService();
         $birthdayString = $birthday;
-        $format = "Y-m-d";
+        $format = "Y-m-d 00:00:00";
         $birthdayDateTime = DateTime::createFromFormat($format, $birthdayString);
 
         if (empty($id)) {

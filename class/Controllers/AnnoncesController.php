@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\AnnoncesService;
+use DateTime;
 
 class AnnoncesController
 {
@@ -21,12 +22,13 @@ class AnnoncesController
             isset($_POST['smoking'])) {
             // Create the annonce :
             $annoncesService = new AnnoncesService();
+            $dateAnnonceBegining = new DateTime($_POST['dateBegining']);
             $isOk = $annoncesService->setAnnonce(
                 null,
                 $_POST['price'],
                 $_POST['startPlace'],
                 $_POST['endPlace'],
-                $_POST['dateBegining'],
+                $dateAnnonceBegining->format('Y-m-d h:i:s'),
                 $_POST['smoking']
             );
             if ($isOk) {

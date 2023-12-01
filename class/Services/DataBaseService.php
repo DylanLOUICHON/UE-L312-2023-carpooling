@@ -41,7 +41,7 @@ class DataBaseService
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => $email,
-            'birthday' => $birthday->format(DateTime::RFC3339),
+            'birthday' => $birthday->format('Y-m-d'),
         ];
         $sql = 'INSERT INTO users (firstname, lastname, email, birthday) VALUES (:firstname, :lastname, :email, :birthday)';
         $query = $this->connection->prepare($sql);
@@ -122,7 +122,7 @@ class DataBaseService
             'price' => $price,
             'startPlace' => $startPlace,
             'endPlace' => $endPlace,
-            'dateBegining' => $dateBegining->format(DateTime::RFC3339),
+            'dateBegining' => $dateBegining->format('Y-m-d h:i:s'),
             'smoking' => $smoking
         ];
         $sql = 'INSERT INTO annonces (price, startPlace, endPlace, dateBegining, smoking) VALUES (:price, :startPlace, :endPlace, :dateBegining, :smoking)';
