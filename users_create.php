@@ -24,7 +24,7 @@
     <input type="text" name="email">
     <br />
     <label for="birthday">Date d'anniversaire au format dd-mm-yyyy :</label>
-    <input type="text" name="birthday">
+    <input type="date" name="birthday"><br />
     <br />
     <label for="cars">Voiture(s) :</label><br/>
     <?php foreach ($cars as $car): ?>

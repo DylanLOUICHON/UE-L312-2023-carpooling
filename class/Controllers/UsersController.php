@@ -29,7 +29,7 @@ class UsersController
                 $_POST['email'],
                 $dateBirthday->format('Y-m-d') . ' 00:00:00'
             );
-
+            
             // Create the user cars relations :
             $isOk = true;
             if (!empty($_POST['cars'])) {

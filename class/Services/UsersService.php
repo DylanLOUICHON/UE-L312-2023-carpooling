@@ -14,9 +14,9 @@ class UsersService
     /**
      * Create or update an user.
      */
-    public function setUser(?string $id, string $firstname, string $lastname, string $email, string $birthday): bool
+    public function setUser(?string $id, string $firstname, string $lastname, string $email, string $birthday): string
     {
-        $isOk = false;
+        $userId = '';
 
         $dataBaseService = new DataBaseService();
         $birthdayString = $birthday;
@@ -24,12 +24,13 @@ class UsersService
         $birthdayDateTime = DateTime::createFromFormat($format, $birthdayString);
 
         if (empty($id)) {
-            $isOk = $dataBaseService->createUser($firstname, $lastname, $email, $birthdayDateTime);
+            $userId = $dataBaseService->createUser($firstname, $lastname, $email, $birthdayDateTime);
         } else {
-            $isOk = $dataBaseService->updateUser($id, $firstname, $lastname, $email, $birthdayDateTime);
+            $dataBaseService->updateUser($id, $firstname, $lastname, $email, $birthdayDateTime);
+            $userId = $id;
         }
 
-        return $isOk;
+        return $userId;
     }
 
     /**
