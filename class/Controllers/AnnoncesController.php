@@ -41,6 +41,13 @@ class AnnoncesController
                 $isOk = $usersService->setUserAnnonce($annonceId, $_POST['idUser']);
             }
 
+            // Create the annonce cars relations :
+            if (!empty($_POST['cars'])) {
+                foreach ($_POST['cars'] as $carId) {
+                    $isOk = $annoncesService->setAnnonceCar($annonceId, $carId);
+                }
+            }
+
             if ($annonceId && $isOk) {
                 $html = 'Annonce créé avec succès.';
             } else {
@@ -62,15 +69,33 @@ class AnnoncesController
         $annoncesService = new AnnoncesService();
         $annonces = $annoncesService->getAnnonces();
 
-        // Get html :
         foreach ($annonces as $annonce) {
+            $carsHtml = '';
+            if (!empty($annonce->getCars())) {
+                foreach ($annonce->getCars() as $car) {
+                    $carsHtml .= 'Marque : '. $car->getBrand() . '<br/> Modèle : ' . $car->getModel() . '<br/> Année : ' . $car->getYear() . '<br/> Couleur : ' . $car->getColor() . '<br/> Motorisation : ' . $car->getMotorization() . '<br/> Nombre de places : ' . $car->getPlacesNumber() . '<br/> Immatriculation : ' . $car->getNumberplate() . '<br/><br/>';
+                }
+            }
+
+            $reservationsHtml = '';
+            if (!empty($annonce->getReservations())) {
+                foreach ($annonce->getReservations() as $reservation) {
+                    $reservationsHtml .= $reservation->getDateTimeReservation()->format('Y-m-d H:i:s');
+                }
+            }
+
             $html .=
-                '#' . $annonce->getId() . ' ' .
-                $annonce->getPrice() . ' ' .
-                $annonce->getStartPlace() . ' ' .
-                $annonce->getEndPlace() . ' ' .
-                $annonce->getSmoking() . ' ' .
-                $annonce->getDateBegining()->format('d-m-Y') . '<br />';
+                '#' . $annonce->getId() . '<br />' .
+                $annonce->getPrice() . '<br />' .
+                $annonce->getStartPlace() . '<br />' .
+                $annonce->getEndPlace() . '<br />' .
+                $annonce->getSmoking() . '<br />' .
+                $annonce->getDateBegining()->format('d-m-Y') . '<br /><br />';
+                '<h3>Voiture utilisée :</h3>' .
+                $carsHtml . '<br/>' .
+                '<h3>Réservation(s) :</h3>' .
+                $reservationsHtml . '<br/>' .
+                '<br/><hr>';
         }
 
         return $html;

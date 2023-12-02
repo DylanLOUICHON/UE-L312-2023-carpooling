@@ -1,12 +1,16 @@
 <?php
 
     use App\Controllers\AnnoncesController;
+    use App\Services\CarsService;
 
     require __DIR__ . '/vendor/autoload.php';
 
     
     $annonceController = new AnnoncesController();
     echo $annonceController->createAnnonce();
+
+    $carsService = new CarsService();
+    $cars = $carsService->getCars();
 ?>
 
 <p> Création d'une annonce </p>
@@ -35,8 +39,16 @@
     <br/>
         
     <label for="smoking"> Fumeur : </label>
-    <input type="checkbox" id="smoking" name="smoking">
+    <input type="checkbox" id="smoking" name="smoking"><br/>
     <br/>
+
+    <label for="cars"> Voiture utilisée : </label><br/>
+    <?php foreach ($cars as $car): ?>
+        <?php $carName = $car->getBrand() . ' ' . $car->getModel() . ' ' . $car->getColor(); ?>
+        <input type="radio" name="cars[]" value="<?php echo $car->getId(); ?>"><?php echo $carName; ?>
+        <br />
+    <?php endforeach; ?>
+    <br />
         
     <input type="submit" value="Créer une annonce">
     <br/>
