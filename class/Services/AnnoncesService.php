@@ -69,5 +69,36 @@ class AnnoncesService
         
         return $isOk;   
     } 
+
+
+
+    /**
+     * Create relation bewteen an annonce and his car.
+     */
+    public function setAnnonceCar(string $annonceId, string $carId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->setAnnonceCar($annonceId, $carId);
+
+        return $isOk;
+    }
+
+
+
+    /**
+     * Create relation bewteen an annonce and his car.
+     */
+    public function setAnnonceReservation(string $annonceId, string $reservationId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->setAnnonceReservation($annonceId, $reservationId);
+
+        return $isOk;
+    }
+
 }
 ?>
