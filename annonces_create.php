@@ -14,26 +14,30 @@
     
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
-    <label for="price"> price : </label> 
+    <label for="price"> Id utilisateur : </label> 
+    <input type="number" name="idUser">
+    <br/>
+
+    <label for="price"> Prix du trajet : </label> 
     <input type="number" name="price">
     <br/>
         
-    <label for="startplace"> start place : </label> 
+    <label for="startplace"> Lieu de départ : </label> 
     <input type="text" name="startPlace">
     <br/>
         
-    <label for="endPlace"> end place : </label> 
+    <label for="endPlace"> Lieu d'arrivé : </label> 
     <input type="text" name="endPlace">
     <br/>
         
-    <label for="dateBegining">date Begining : </label> 
+    <label for="dateBegining"> Date du départ : </label> 
     <input type="datetime-local" name="dateBegining">
     <br/>
         
-    <label for="smoking">smoking :</label>
+    <label for="smoking"> Fumeur : </label>
     <input type="checkbox" id="smoking" name="smoking">
     <br/>
         
-    <input type="submit" value="Créer une réservation">
+    <input type="submit" value="Créer une annonce">
     <br/>
 </form>

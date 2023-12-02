@@ -10,8 +10,10 @@
 
 <p> Suppression d'une réservation </p>
 <form method="post" action="reservations_delete.php" name="reservationDeleteForm">
-    <label for="id">Id :</label>
+    
+    <label for="id">Identifiant :</label>
     <input type="text" name="id">
     <br />
-    <input type="submit" value="Supprimer une reservation ">
+
+    <input type="submit" value="Supprimer une reservation">
 </form>

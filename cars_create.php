@@ -15,33 +15,33 @@
 
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque voiture -->
 
-    <label for="brand">brand:</label>
+    <label for="brand"> Marque : </label>
     <input type="text" name="brand">
     <br />
 
-    <label for="model">model:</label>
+    <label for="model"> Modèle : </label>
     <input type="text" name="model">
     <br />
 
-    <label for="year">year:</label>
+    <label for="year"> Année : </label>
     <input type="number" name="year">
     <br />
 
-    <label for="color">color:</label>
+    <label for="color"> Couleur : </label>
     <input type="text" name="color">
     <br />
 
-    <label for="motorization">motorization:</label>
+    <label for="motorization"> Motorisation : </label>
     <input type="text" name="motorization">
     <br />
 
-    <label for="placesNumber">places number:</label>
+    <label for="placesNumber"> Nombre de places : <label>
     <input type="number" name="placesNumber">
     <br />
 
-    <label for="numberPlate">Number plate:</label>
+    <label for="numberPlate"> Immatriculation : </label>
     <input type="text" name="numberPlate">
     <br />
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Créer une voiture">
 </form>

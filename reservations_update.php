@@ -8,19 +8,19 @@
   echo $reservationControler->updateReservation();
 ?>
 
-<p>Création d'une reservation</p>
+<p> Mettre à jour une réservation </p>
 <form method="post" action="reservations_update.php" name="reservationUpdateForm">
   <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
-  <label for="idAnnonce">id Annonce :</label>
+  <label for="idAnnonce"> Identifiant annonce : </label>
   <input type="number" name="idAnnonce">
   <br />
 
-  <label for="idUser">id User :</label>
-  <input type="number" name="id User">
+  <label for="idUser"> Identifiant utilisateur : </label>
+  <input type="number" name="idUser">
   <br />
 
-  <label for="dateTimeReservation ">Date de reservation au format dd-mm-yyyy :</label>
+  <label for="dateTimeReservation "> Date de réservation : </label>
   <input type="text" name="dateTimeReservation">
   <br />
 </form>
