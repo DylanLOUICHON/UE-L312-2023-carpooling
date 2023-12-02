@@ -11,7 +11,7 @@ class AnnoncesService
     /**
      * Create or update an annonce.
      */
-    public function setAnnonce(?string $id, int $price, string $startPlace, string $endPlace, string $dateBegining, bool $smoking): bool
+    public function setAnnonce(?string $id, int $price, string $startPlace, string $endPlace, string $dateBegining, bool $smoking): string
     {
         $isOk = false;
 

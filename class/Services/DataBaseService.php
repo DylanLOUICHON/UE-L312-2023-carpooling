@@ -114,7 +114,7 @@ class DataBaseService
     /**
      * Create an annonce.
      */
-    public function createAnnonce(string $price, string $startPlace, string $endPlace, DateTime $dateBegining, bool $smoking): bool
+    public function createAnnonce(string $price, string $startPlace, string $endPlace, DateTime $dateBegining, bool $smoking): string
     {
         $isOk = false;
 
@@ -129,7 +129,12 @@ class DataBaseService
         $query = $this->connection->prepare($sql);
         $isOk = $query->execute($data);
 
-        return $isOk;
+        if ($isOk) {
+            $userId = $this->connection->lastInsertId();
+        }
+
+
+        return $userId;
     }
 
 
@@ -195,7 +200,7 @@ class DataBaseService
     /**
      * Create a car.
      */
-    public function createCar(string $brand, string $model, string $year, string $color, string $motorization, int $placesNumber, string $numberplate): bool
+    public function createCar(string $brand, string $model, string $year, string $color, string $motorization, int $placesNumber, string $numberplate): string
     {
         $carId = '';
 
@@ -286,7 +291,7 @@ class DataBaseService
     /**
      * Create a reservation.
      */
-    public function createReservation(DateTime $dateTimeReservation): bool
+    public function createReservation(DateTime $dateTimeReservation): string
     {
         $isOk = false;
 

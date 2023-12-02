@@ -38,13 +38,6 @@ class UsersController
                 }
             }
 
-            // Create the user annonces relations :
-            if (!empty($_POST['annonces'])) {
-                foreach ($_POST['annonces'] as $annonceId) {
-                    $isOk = $usersService->setUserAnnonce($userId, $annonceId);
-                }
-            }
-
             // Create the user reservations relations :
             if (!empty($_POST['reservations'])) {
                 foreach ($_POST['reservations'] as $reservationId) {

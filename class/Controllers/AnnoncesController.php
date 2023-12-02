@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\AnnoncesService;
+use App\Services\UsersService;
 use DateTime;
 
 class AnnoncesController
@@ -15,7 +16,8 @@ class AnnoncesController
         $html = '';
 
         // If the form have been submitted :
-        if (isset($_POST['price']) &&
+        if (isset($_POST['idUser']) &&
+            isset($_POST['price']) &&
             isset($_POST['startPlace']) &&
             isset($_POST['endPlace']) &&
             isset($_POST['dateBegining']) &&
@@ -23,7 +25,7 @@ class AnnoncesController
             // Create the annonce :
             $annoncesService = new AnnoncesService();
             $dateAnnonceBegining = new DateTime($_POST['dateBegining']);
-            $isOk = $annoncesService->setAnnonce(
+            $annonceId = $annoncesService->setAnnonce(
                 null,
                 $_POST['price'],
                 $_POST['startPlace'],
@@ -31,7 +33,15 @@ class AnnoncesController
                 $dateAnnonceBegining->format('Y-m-d h:i:s'),
                 $_POST['smoking']
             );
-            if ($isOk) {
+
+            // Create the user-annonce relation :
+            $isOk = true;
+            if (!empty($_POST['idUser'])) {
+                $usersService = new UsersService();
+                $isOk = $usersService->setUserAnnonce($annonceId, $_POST['idUser']);
+            }
+
+            if ($annonceId && $isOk) {
                 $html = 'Annonce créé avec succès.';
             } else {
                 $html = 'Erreur lors de la création de l\'annonce.';
