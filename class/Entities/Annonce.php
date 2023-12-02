@@ -13,6 +13,8 @@ class Annonce
     private $endPlace;
     private $dateBegining;
     private $smoking;
+    private $cars;
+    private $reservations;
 
 
 
@@ -85,5 +87,31 @@ class Annonce
     public function setSmoking(bool $smoking): void
     {
         $this->smoking = $smoking;
+    }
+
+
+    // Relations methods
+    public function getCars(): ?array
+    {
+        return $this->cars;
+    }
+
+    public function setCars(array $cars)
+    {
+        $this->cars = $cars;
+
+        return $this;
+    }
+
+    public function getReservations(): ?array
+    {
+        return $this->reservations;
+    }
+
+    public function setReservations(array $reservations)
+    {
+        $this->reservations = $reservations;
+
+        return $this;
     }
 }

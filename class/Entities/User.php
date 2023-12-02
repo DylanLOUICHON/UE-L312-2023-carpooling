@@ -65,6 +65,8 @@ class User
         $this->birthday = $birthday;
     }
 
+
+    // Relations methods
     public function getCars(): ?array
     {
         return $this->cars;
