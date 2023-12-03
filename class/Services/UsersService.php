@@ -131,6 +131,20 @@ class UsersService
     }
 
 
+    /**
+     * Delete car of given user id.
+     */
+    public function deleteUserCar(string $userId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->deleteUserCar($userId);
+
+        return $isOk;
+    }
+
+
 
     /**
      * Create relation bewteen an user and his annonces.
@@ -179,12 +193,20 @@ class UsersService
     /**
      * Delete annonces of given user id.
      */
-    public function deleteUserAnnonce(string $annonceId): bool
+    public function deleteUserAnnonces(?string $userId, ?string $annonceId): bool
     {
         $isOk = false;
 
-        $dataBaseService = new DataBaseService();
-        $isOk = $dataBaseService->deleteUserAnnonce($annonceId);
+        if (!empty($userId)) {
+            $dataBaseService = new DataBaseService();
+            $isOk = $dataBaseService->deleteUserAnnonces($userId, null);
+        }
+        elseif (!empty($annonceId)){
+            $dataBaseService = new DataBaseService();
+            $isOk = $dataBaseService->deleteUserAnnonces(null, $annonceId);
+            
+        }
+
 
         return $isOk;
     }
@@ -229,5 +251,16 @@ class UsersService
         }
 
         return $userReservations;
+    }
+
+
+    public function deleteUserReservations(string $userId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->deleteUserReservations($userId);
+
+        return $isOk;
     }
 }

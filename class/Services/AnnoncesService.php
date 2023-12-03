@@ -175,5 +175,16 @@ class AnnoncesService
         return $annonceReservations;
     }
 
+
+    public function deleteAnnonceReservations(string $annonceId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->deleteAnnonceReservations($annonceId);
+
+        return $isOk;
+    }
+
 }
 ?>

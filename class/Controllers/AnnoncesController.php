@@ -158,10 +158,13 @@ class AnnoncesController
             if (!empty($_POST['id'])) {
                 $annonceIdentifiant = $_POST['id'];
                 $usersService = new UsersService();
-                $isOk = $usersService->deleteUserAnnonce($annonceIdentifiant);
+                $isOk = $usersService->deleteUserAnnonces(null, $annonceIdentifiant);
 
                 // Delete the annonce-car relation :
                 $isOk = $annoncesService->deleteAnnonceCar($annonceIdentifiant);
+
+                // Delete the annonce-reservation relation :
+                $isOk = $annoncesService->deleteAnnonceReservations($annonceIdentifiant);
             }
 
             if ($annonceId && $isOk) {

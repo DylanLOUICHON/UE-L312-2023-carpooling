@@ -161,8 +161,23 @@ class UsersController
         if (isset($_POST['id'])) {
             // Delete the user :
             $usersService = new UsersService();
-            $isOk = $usersService->deleteUser($_POST['id']);
-            if ($isOk) {
+            $userId = $usersService->deleteUser($_POST['id']);
+
+            // Delete the user-car relation :
+            $isOk = true;
+            if (!empty($_POST['id'])) {
+                $userIdentifiant = $_POST['id'];
+                $usersService = new UsersService();
+                $isOk = $usersService->deleteUserCar($userIdentifiant);
+
+                // Delete the user-annonces relation :
+                $isOk = $usersService->deleteUserAnnonces($userIdentifiant, null);
+
+                // Delete the user-reservations relation :
+                $isOk = $usersService->deleteUserReservations($userIdentifiant);
+            }
+
+            if ($userId && $isOk) {
                 $html = 'Utilisateur supprimé avec succès.';
             } else {
                 $html = 'Erreur lors de la supression de l\'utilisateur.';
