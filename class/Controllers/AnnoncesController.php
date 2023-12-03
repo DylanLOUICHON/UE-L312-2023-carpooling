@@ -38,7 +38,7 @@ class AnnoncesController
             $isOk = true;
             if (!empty($_POST['idUser'])) {
                 $usersService = new UsersService();
-                $isOk = $usersService->setUserAnnonce($annonceId, $_POST['idUser']);
+                $isOk = $usersService->setUserAnnonce($_POST['idUser'], $annonceId);
             }
 
             // Create the annonce cars relations :
