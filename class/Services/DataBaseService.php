@@ -534,7 +534,7 @@ class DataBaseService
     /**
      * Get annonce of given car id.
      */
-    public function getAnnonceCar(string $annonceId): array
+    public function getAnnonceCars(string $annonceId): array
     {
         $annonceCar = [];
 
@@ -594,7 +594,7 @@ class DataBaseService
     /**
      * Get annonce of given car id.
      */
-    public function getAnnonceReservation(string $annonceId): array
+    public function getAnnonceReservations(string $annonceId): array
     {
         $annonceReservations = [];
 

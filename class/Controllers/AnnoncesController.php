@@ -84,13 +84,19 @@ class AnnoncesController
                 }
             }
 
+            $smoking = 'Non';
+                    if ($annonce->getSmoking() == 1){
+                        $smoking = 'Oui';
+                    }
+
             $html .=
-                '#' . $annonce->getId() . '<br />' .
-                $annonce->getPrice() . '<br />' .
-                $annonce->getStartPlace() . '<br />' .
-                $annonce->getEndPlace() . '<br />' .
-                $annonce->getSmoking() . '<br />' .
-                $annonce->getDateBegining()->format('d-m-Y') . '<br /><br />';
+                '<h3>Réservation #' . $annonce->getId() . '</h3>' .
+                'Prix : ' . $annonce->getPrice() . '€ <br />' .
+                'Lieu de départ : ' . $annonce->getStartPlace() . '<br />' .
+                'Lieu d\'arrivé : ' . $annonce->getEndPlace() . '<br />' .
+                'Fumeur : ' . $smoking . '<br />' .
+                'Date : ' . $annonce->getDateBegining()->format('d-m-Y') . '<br />' .
+                'Heure : ' . $annonce->getDateBegining()->format('H:i:s') . '<br />' .
                 '<h3>Voiture utilisée :</h3>' .
                 $carsHtml . '<br/>' .
                 '<h3>Réservation(s) :</h3>' .
