@@ -13,12 +13,11 @@ class AnnoncesService
     /**
      * Create or update an annonce.
      */
-    public function setAnnonce(?string $id, int $price, string $startPlace, string $endPlace, string $dateBegining, bool $smoking): string
+    public function setAnnonce(?string $id, int $price, string $startPlace, string $endPlace, string $dateBegining, string $smoking): string
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
-        $dateBegining = new DateTime($dateBegining);
         if (empty($id)) {
             $isOk = $dataBaseService->createAnnonce($price, $startPlace, $endPlace, $dateBegining, $smoking);
         } else {

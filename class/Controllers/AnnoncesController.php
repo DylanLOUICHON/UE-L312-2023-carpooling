@@ -115,11 +115,18 @@ class AnnoncesController
         $html = '';
 
         // If the form have been submitted :
-        if (isset($_POST['price']) &&
+        if (isset($_POST['id']) &&
+            isset($_POST['price']) &&
             isset($_POST['startPlace']) &&
             isset($_POST['endPlace']) &&
-            isset($_POST['dateBegining']) &&
-            isset($_POST['smoking'])) {
+            isset($_POST['dateBegining'])) {
+
+            if (!empty($_POST['smoking'])){
+                $smoking = 1;
+            }else{
+                $smoking = 0;
+            }
+
             // Update the annonce :
             $annoncesService = new AnnoncesService();
             $isOk = $annoncesService->setAnnonce(
@@ -128,7 +135,7 @@ class AnnoncesController
                 $_POST['startPlace'],
                 $_POST['endPlace'],
                 $_POST['dateBegining'],
-                $_POST['smoking']
+                $smoking
             );
             if ($isOk) {
                 $html = 'Annonce mise à jour avec succès.';

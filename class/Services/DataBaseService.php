@@ -114,7 +114,7 @@ class DataBaseService
     /**
      * Create an annonce.
      */
-    public function createAnnonce(string $price, string $startPlace, string $endPlace, DateTime $dateBegining, bool $smoking): string
+    public function createAnnonce(string $price, string $startPlace, string $endPlace, string $dateBegining, bool $smoking): string
     {
         $isOk = false;
 
@@ -122,7 +122,7 @@ class DataBaseService
             'price' => $price,
             'startPlace' => $startPlace,
             'endPlace' => $endPlace,
-            'dateBegining' => $dateBegining->format('Y-m-d h:i:s'),
+            'dateBegining' => $dateBegining,
             'smoking' => $smoking
         ];
         $sql = 'INSERT INTO annonces (price, startPlace, endPlace, dateBegining, smoking) VALUES (:price, :startPlace, :endPlace, :dateBegining, :smoking)';
@@ -159,7 +159,7 @@ class DataBaseService
     /**
      * Update an annonce.
      */
-    public function updateAnnonce(string $id, string $price, string $startPlace, string $endPlace, DateTime $dateBegining, bool $smoking): bool
+    public function updateAnnonce(string $id, string $price, string $startPlace, string $endPlace, string $dateBegining, string $smoking): bool
     {
         $isOk = false;
 
@@ -168,7 +168,7 @@ class DataBaseService
             'price' => $price,
             'startPlace' => $startPlace,
             'endPlace' => $endPlace,
-            'dateBegining' => $dateBegining->format(DateTime::RFC3339),
+            'dateBegining' => $dateBegining,
             'smoking' => $smoking
         ];
         $sql = 'UPDATE annonces SET price = :price, startPlace = :startPlace, endPlace = :endPlace, dateBegining = :dateBegining, smoking = :smoking WHERE id = :id;';

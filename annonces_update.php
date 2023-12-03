@@ -13,8 +13,8 @@
 
     <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
-    <label for="price"> Identifiant : </label>
-    <input type="number" name="price">
+    <label for="id"> Identifiant : </label>
+    <input type="number" name="id">
     <br />
 
     <label for="price"> Prix du trajet : </label>
@@ -30,7 +30,7 @@
     <br />
 
     <label for="dateBegining"> Date du départ : </label>
-    <input type="date" name="dateBegining">
+    <input type="datetime-local" name="dateBegining">
     <br />
 
     <label for="smoking"> Fumeur : </label>
