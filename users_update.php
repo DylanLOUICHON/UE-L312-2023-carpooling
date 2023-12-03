@@ -28,7 +28,7 @@ echo $controller->updateUser();
     <br />
 
     <label for="birthday"> Date d'anniversaire : </label>
-    <input type="text" name="birthday">
+    <input type="date" name="birthday">
     <br />
 
     <input type="submit" value="Modifier l'utilisateur">

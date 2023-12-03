@@ -33,7 +33,7 @@ class DataBaseService
     /**
      * Create an user.
      */
-    public function createUser(string $firstname, string $lastname, string $email, DateTime $birthday): string
+    public function createUser(string $firstname, string $lastname, string $email, string $birthday): string
     {
         $userId = '';
 
@@ -41,7 +41,7 @@ class DataBaseService
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => $email,
-            'birthday' => $birthday->format('Y-m-d'),
+            'birthday' => $birthday,
         ];
         $sql = 'INSERT INTO users (firstname, lastname, email, birthday) VALUES (:firstname, :lastname, :email, :birthday)';
         $query = $this->connection->prepare($sql);
@@ -74,7 +74,7 @@ class DataBaseService
     /**
      * Update an user.
      */
-    public function updateUser(string $id, string $firstname, string $lastname, string $email, DateTime $birthday): bool
+    public function updateUser(string $id, string $firstname, string $lastname, string $email, string $birthday): bool
     {
         $isOk = false;
 
@@ -83,7 +83,7 @@ class DataBaseService
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => $email,
-            'birthday' => $birthday->format(DateTime::RFC3339),
+            'birthday' => $birthday,
         ];
         $sql = 'UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, birthday = :birthday WHERE id = :id;';
         $query = $this->connection->prepare($sql);

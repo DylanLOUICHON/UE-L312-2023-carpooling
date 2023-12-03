@@ -19,14 +19,11 @@ class UsersService
         $userId = '';
 
         $dataBaseService = new DataBaseService();
-        $birthdayString = $birthday;
-        $format = "Y-m-d 00:00:00";
-        $birthdayDateTime = DateTime::createFromFormat($format, $birthdayString);
 
         if (empty($id)) {
-            $userId = $dataBaseService->createUser($firstname, $lastname, $email, $birthdayDateTime);
+            $userId = $dataBaseService->createUser($firstname, $lastname, $email, $birthday);
         } else {
-            $dataBaseService->updateUser($id, $firstname, $lastname, $email, $birthdayDateTime);
+            $dataBaseService->updateUser($id, $firstname, $lastname, $email, $birthday);
             $userId = $id;
         }
 

@@ -94,7 +94,7 @@ class UsersController
             $reservationsHtml = '';
             if (!empty($user->getReservations())) {
                 foreach ($user->getReservations() as $reservation) {
-                    $reservationsHtml .= $reservation->getDateTimeReservation()->format('Y-m-d H:i:s');
+                    $reservationsHtml .= $reservation->getDateTimeReservation()->format('Y-m-d H:i:s') . '<br/>';
                 }
             }
 
@@ -111,6 +111,7 @@ class UsersController
                 '<h3>Annonce(s) personnelle(s) :</h3>' .
                 $annoncesHtml . '<br/>' .
                 '<h3>Réservation(s) personnelle(s) :</h3>' .
+                'Date et heure : <br/>' .
                 $reservationsHtml . '<br />' .
                 '<br/><hr>';
         }
