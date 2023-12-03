@@ -59,13 +59,16 @@ class CarsController
 
         // Get html :
         foreach ($cars as $car) {
+            
             $html .=
-                '#' . $car->getId() . ' ' .
-                $car->getBrand() . ' ' .
-                $car->getModel() . ' ' .
-                $car->getYear() . ' ' .
-                $car->getColor() . ' ' .
-                $car->getMotorization();
+                '<h3>Voiture #' . $car->getId() . '</h3>' .
+                'Marque : ' . $car->getBrand() . '<br/>' .
+                'Modèle : ' . $car->getModel() . '<br/>' .
+                'Année : ' . $car->getYear() . '<br/>' .
+                'Couleur : ' . $car->getColor() . '<br/>' .
+                'Motorisation : ' . $car->getMotorization() . '<br/>' .
+                'Nombre de places : ' . $car->getPlacesNumber() . '<br/>' .
+                'Immatriculation : ' . $car->getNumberplate() . '<br/>';
         }
 
         return $html;
