@@ -349,7 +349,7 @@ class DataBaseService
     /**
      * Update a reservation.
      */
-    public function updateReservation(string $id, string $dateTimeReservation): bool
+    public function updateReservation(string $id, string $idAnnonce, string $idUser, string $dateTimeReservation): bool
     {
         $isOk = false;
 
@@ -360,6 +360,23 @@ class DataBaseService
         $sql = 'UPDATE reservations SET dateTimeReservation = :dateTimeReservation WHERE id = :id;';
         $query = $this->connection->prepare($sql);
         $isOk = $query->execute($data);
+
+        $data2 = [
+            'id' => $id,
+            'annonceId' => $idAnnonce
+        ];
+        $sql = 'UPDATE annonces_reservations SET annonce_id = :annonceId WHERE reservation_id = :id;';
+        $query = $this->connection->prepare($sql);
+        $isOk = $query->execute($data2);
+
+        $data3 = [
+            'id' => $id,
+            'userId' => $idUser
+        ];
+        $sql = 'UPDATE users_reservations SET user_id = :userId WHERE reservation_id = :id;';
+        $query = $this->connection->prepare($sql);
+        $isOk = $query->execute($data3);
+
 
         return $isOk;
     }

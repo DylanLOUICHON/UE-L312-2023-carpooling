@@ -12,6 +12,10 @@
 <form method="post" action="reservations_update.php" name="reservationUpdateForm">
   <!-- Des inputs avec des labels pour remplir les caractéristiques de chaque annonce -->
 
+  <label for="id"> Identifiant réservation : </label>
+  <input type="number" name="id">
+  <br />
+
   <label for="idAnnonce"> Identifiant annonce : </label>
   <input type="number" name="idAnnonce">
   <br />
@@ -21,6 +25,8 @@
   <br />
 
   <label for="dateTimeReservation "> Date de réservation : </label>
-  <input type="text" name="dateTimeReservation">
+  <input type="datetime-local" name="dateTimeReservation">
   <br />
+
+  <input type="submit" value="Modifier une reservation">
 </form>

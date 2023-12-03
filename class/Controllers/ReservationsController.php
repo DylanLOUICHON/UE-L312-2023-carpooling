@@ -67,11 +67,15 @@ class ReservationsController
 
         // If the form have been submitted :
         if (isset($_POST['id']) &&
+            isset($_POST['idAnnonce']) &&
+            isset($_POST['idUser']) &&
             isset($_POST['dateTimeReservation'])) {
             // Update the reservation :
             $reservationsService = new ReservationsService();
             $isOk = $reservationsService->setReservation(
                 $_POST['id'],
+                $_POST['idAnnonce'],
+                $_POST['idUser'],
                 $_POST['dateTimeReservation']
             );
             if ($isOk) {

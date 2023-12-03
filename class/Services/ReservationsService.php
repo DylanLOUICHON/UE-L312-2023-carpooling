@@ -21,7 +21,7 @@ class ReservationsService
         if (empty($id)) {
             $isOk = $dataBaseService->createReservation($idAnnonce, $idUser, $dateTimeReservation);
         } else {
-            $isOk = $dataBaseService->updateReservation($idUser, $dateTimeReservation);
+            $isOk = $dataBaseService->updateReservation($id, $idAnnonce, $idUser, $dateTimeReservation);
         }
 
         return $isOk;
