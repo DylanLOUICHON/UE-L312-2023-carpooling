@@ -291,7 +291,7 @@ class DataBaseService
     /**
      * Create a reservation.
      */
-    public function createReservation(DateTime $dateTimeReservation): string
+    public function createReservation(string $idAnnonce, string $idUser, string $dateTimeReservation): string
     {
         $reservationId = '';
 
@@ -304,6 +304,24 @@ class DataBaseService
 
         if ($isOk) {
             $reservationId = $this->connection->lastInsertId();
+
+            $data = [
+                'idAnnonce' => $idAnnonce,
+                'reservationId' => $reservationId
+            ];
+
+            $sql = 'INSERT INTO annonces_reservations (annonce_id, reservation_id) VALUES (:idAnnonce, :reservationId)';
+            $query = $this->connection->prepare($sql);
+            $isOk = $query->execute($data);
+
+            $data2 = [
+                'idUser' => $idUser,
+                'reservationId' => $reservationId
+            ];
+
+            $sql2 = 'INSERT INTO users_reservations (user_id, reservation_id) VALUES (:idUser, :reservationId)';
+            $query = $this->connection->prepare($sql2);
+            $isOk = $query->execute($data2);
         }
 
         return $reservationId;
@@ -331,7 +349,7 @@ class DataBaseService
     /**
      * Update a reservation.
      */
-    public function updateReservation(string $id, DateTime $dateTimeReservation): bool
+    public function updateReservation(string $id, string $dateTimeReservation): bool
     {
         $isOk = false;
 

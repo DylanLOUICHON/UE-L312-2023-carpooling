@@ -13,16 +13,15 @@ class ReservationsService
     /**
      * Create or update a reservation.
      */
-    public function setReservation(?string $idUser, string $dateTimeReservation): bool
+    public function setReservation(?string $id, ?string $idAnnonce, ?string $idUser, string $dateTimeReservation): bool
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
-        $reservationDateTime = new DateTime($dateTimeReservation);
         if (empty($id)) {
-            $isOk = $dataBaseService->createReservation($reservationDateTime);
+            $isOk = $dataBaseService->createReservation($idAnnonce, $idUser, $dateTimeReservation);
         } else {
-            $isOk = $dataBaseService->updateReservation($idUser, $reservationDateTime);
+            $isOk = $dataBaseService->updateReservation($idUser, $dateTimeReservation);
         }
 
         return $isOk;

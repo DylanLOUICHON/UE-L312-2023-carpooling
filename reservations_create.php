@@ -22,7 +22,7 @@
   <br />
 
   <label for="dateTimeReservation "> Date de réservation : </label>
-  <input type="text" name="dateTimeReservation">
+  <input type="datetime-local" name="dateTimeReservation">
   <br />
 
   <input type="submit" value="Créer une reservation">

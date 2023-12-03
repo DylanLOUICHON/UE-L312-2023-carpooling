@@ -14,11 +14,15 @@ class ReservationsController
         $html = '';
 
         // If the form have been submitted :
-        if (isset($_POST['dateTimeReservation'])) {
+        if (isset($_POST['idAnnonce']) &&
+            isset($_POST['idUser']) &&
+            isset($_POST['dateTimeReservation'])) {
             // Create the reservation :
             $reservationsService = new ReservationsService();
             $isOk = $reservationsService->setReservation(
                 null,
+                $_POST['idAnnonce'],
+                $_POST['idUser'],
                 $_POST['dateTimeReservation']
             );
             if ($isOk) {
@@ -45,8 +49,10 @@ class ReservationsController
         // Get html :
         foreach ($reservations as $reservation) {
             $html .=
-                '#' . $reservation->getId() . ' ' .
-                $reservation->getDateTimeReservation()->format('Y-m-d H:i:s');
+                '<h3>Réservation #' . $reservation->getId() . '</h3>' .
+                'Date : ' . $reservation->getDateTimeReservation()->format('Y-m-d') . '</br>' .
+                'Heure : ' . $reservation->getDateTimeReservation()->format('H:i:s') . '</br>' .
+                '<br/>';
         }
 
         return $html;
