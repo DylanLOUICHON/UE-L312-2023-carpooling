@@ -176,6 +176,18 @@ class UsersService
         return $userAnnonces;
     }
 
+    /**
+     * Delete annonces of given user id.
+     */
+    public function deleteUserAnnonce(string $annonceId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->deleteUserAnnonce($annonceId);
+
+        return $isOk;
+    }
 
 
     /**

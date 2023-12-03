@@ -145,8 +145,20 @@ class AnnoncesController
         if (isset($_POST['id'])) {
             // Delete the annonce :
             $annoncesService = new AnnoncesService();
-            $isOk = $annoncesService->deleteAnnonce($_POST['id']);
-            if ($isOk) {
+            $annonceId = $annoncesService->deleteAnnonce($_POST['id']);
+
+            // Delete the user-annonce relation :
+            $isOk = true;
+            if (!empty($_POST['id'])) {
+                $annonceIdentifiant = $_POST['id'];
+                $usersService = new UsersService();
+                $isOk = $usersService->deleteUserAnnonce($annonceIdentifiant);
+
+                // Delete the annonce-car relation :
+                $isOk = $annoncesService->deleteAnnonceCar($annonceIdentifiant);
+            }
+
+            if ($annonceId && $isOk) {
                 $html = 'Annonce supprimée avec succès.';
             } else {
                 $html = 'Erreur lors de la supression de l\'annonce.';

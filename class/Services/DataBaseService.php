@@ -453,7 +453,20 @@ class DataBaseService
         return $userAnnonces;
     }
 
+    public function deleteUserAnnonce(string $annonceId): bool
+    {
+        $isOk = false;
 
+        $data = [
+            'annonceId' => $annonceId,
+        ];
+
+        $sql = 'DELETE FROM users_annonces WHERE annonce_id = :annonceId;';
+        $query = $this->connection->prepare($sql);
+        $isOk = $query->execute($data);
+
+        return $isOk;
+    }
 
     /**
      * Create relation bewteen an user and his reservations.
@@ -541,6 +554,21 @@ class DataBaseService
         }
 
         return $annonceCar;
+    }
+
+
+    public function deleteAnnonceCar(string $annonceId): bool
+    {
+        $isOk = false;
+
+        $data = [
+            'annonceId' => $annonceId,
+        ];
+        $sql = 'DELETE FROM annonces_cars WHERE annonce_id = :annonceId;';
+        $query = $this->connection->prepare($sql);
+        $isOk = $query->execute($data);
+
+        return $isOk;
     }
 
 

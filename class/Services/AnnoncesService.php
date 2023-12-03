@@ -60,7 +60,7 @@ class AnnoncesService
     /**
      * Delete an annonce.
      */
-    public function deleteAnnonce(string $id): bool
+    public function deleteAnnonce(string $id): string
     {
         $isOk = false;
 
@@ -81,6 +81,17 @@ class AnnoncesService
 
         $dataBaseService = new DataBaseService();
         $isOk = $dataBaseService->setAnnonceCar($annonceId, $carId);
+
+        return $isOk;
+    }
+
+
+    public function deleteAnnonceCar(string $annonceId): bool
+    {
+        $isOk = false;
+
+        $dataBaseService = new DataBaseService();
+        $isOk = $dataBaseService->deleteAnnonceCar($annonceId);
 
         return $isOk;
     }
