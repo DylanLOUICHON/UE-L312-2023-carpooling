@@ -168,7 +168,7 @@ class UsersController
             if (!empty($_POST['id'])) {
                 $userIdentifiant = $_POST['id'];
                 $usersService = new UsersService();
-                $isOk = $usersService->deleteUserCar($userIdentifiant);
+                $isOk = $usersService->deleteUserCar($userIdentifiant, null);
 
                 // Delete the user-annonces relation :
                 $isOk = $usersService->deleteUserAnnonces($userIdentifiant, null);

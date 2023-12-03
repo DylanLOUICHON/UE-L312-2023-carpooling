@@ -409,16 +409,27 @@ class DataBaseService
     }
 
 
-    public function deleteUserCar(string $userId): bool
+    public function deleteUserCar(?string $userId, ?string $carId): bool
     {
         $isOk = false;
 
-        $data = [
-            'userId' => $userId,
-        ];
-        $sql = 'DELETE FROM users_cars WHERE user_id = :userId;';
-        $query = $this->connection->prepare($sql);
-        $isOk = $query->execute($data);
+        if (!empty($userId)) {
+            $data = [
+                'userId' => $userId,
+            ];
+
+            $sql = 'DELETE FROM users_cars WHERE user_id = :userId;';
+            $query = $this->connection->prepare($sql);
+            $isOk = $query->execute($data);
+        }
+        elseif (!empty($carId)){
+            $data = [
+                'carId' => $carId,
+            ];
+            $sql = 'DELETE FROM users_cars WHERE car_id = :carId;';
+            $query = $this->connection->prepare($sql);
+            $isOk = $query->execute($data);
+        }
 
         return $isOk;
     }
@@ -597,16 +608,27 @@ class DataBaseService
     }
 
 
-    public function deleteAnnonceCar(string $annonceId): bool
+    public function deleteAnnonceCar(?string $annonceId, ?string $carId): bool
     {
         $isOk = false;
 
-        $data = [
-            'annonceId' => $annonceId,
-        ];
-        $sql = 'DELETE FROM annonces_cars WHERE annonce_id = :annonceId;';
-        $query = $this->connection->prepare($sql);
-        $isOk = $query->execute($data);
+        if (!empty($annonceId)) {
+            $data = [
+                'annonceId' => $annonceId,
+            ];
+
+            $sql = 'DELETE FROM annonces_cars WHERE annonce_id = :annonceId;';
+            $query = $this->connection->prepare($sql);
+            $isOk = $query->execute($data);
+        }
+        elseif (!empty($carId)){
+            $data = [
+                'carId' => $carId,
+            ];
+            $sql = 'DELETE FROM annonces_cars WHERE car_id = :carId;';
+            $query = $this->connection->prepare($sql);
+            $isOk = $query->execute($data);
+        }
 
         return $isOk;
     }

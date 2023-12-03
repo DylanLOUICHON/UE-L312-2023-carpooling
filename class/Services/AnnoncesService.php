@@ -127,12 +127,19 @@ class AnnoncesService
     }
 
 
-    public function deleteAnnonceCar(string $annonceId): bool
+    public function deleteAnnonceCar(?string $annonceId, ?string $carId): bool
     {
         $isOk = false;
 
-        $dataBaseService = new DataBaseService();
-        $isOk = $dataBaseService->deleteAnnonceCar($annonceId);
+        if (!empty($annonceId)){
+            $dataBaseService = new DataBaseService();
+            $isOk = $dataBaseService->deleteAnnonceCar($annonceId, null);
+    
+        } 
+        elseif (!empty($carId)) {
+            $dataBaseService = new DataBaseService();
+            $isOk = $dataBaseService->deleteAnnonceCar(null, $carId);
+        }
 
         return $isOk;
     }

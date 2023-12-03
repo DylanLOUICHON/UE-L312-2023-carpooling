@@ -168,7 +168,7 @@ class AnnoncesController
                 $isOk = $usersService->deleteUserAnnonces(null, $annonceIdentifiant);
 
                 // Delete the annonce-car relation :
-                $isOk = $annoncesService->deleteAnnonceCar($annonceIdentifiant);
+                $isOk = $annoncesService->deleteAnnonceCar($annonceIdentifiant, null);
 
                 // Delete the annonce-reservation relation :
                 $isOk = $annoncesService->deleteAnnonceReservations($annonceIdentifiant);

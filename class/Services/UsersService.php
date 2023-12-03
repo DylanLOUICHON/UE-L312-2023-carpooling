@@ -134,12 +134,19 @@ class UsersService
     /**
      * Delete car of given user id.
      */
-    public function deleteUserCar(string $userId): bool
+    public function deleteUserCar(?string $userId, ?string $carId): bool
     {
         $isOk = false;
 
-        $dataBaseService = new DataBaseService();
-        $isOk = $dataBaseService->deleteUserCar($userId);
+        if (!empty($userId)){
+            $dataBaseService = new DataBaseService();
+            $isOk = $dataBaseService->deleteUserCar($userId, null);
+    
+        } 
+        elseif (!empty($carId)) {
+            $dataBaseService = new DataBaseService();
+            $isOk = $dataBaseService->deleteUserCar(null, $carId);
+        }
 
         return $isOk;
     }

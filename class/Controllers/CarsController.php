@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Services\CarsService;
+use App\Services\UsersService;
+use App\Services\AnnoncesService;
+
 
 class CarsController
 {
@@ -117,6 +120,21 @@ class CarsController
             // Delete the car :
             $carsService = new CarsService();
             $isOk = $carsService->deleteCar($_POST['id']);
+
+            // Delete the car-user relation :
+            $isOk = true;
+            if (!empty($_POST['id'])) {
+                $annonceIdentifiant = $_POST['id'];
+                $usersService = new UsersService();
+                $isOk = $usersService->deleteUserCar(null, $annonceIdentifiant);
+
+                // Delete the car-annonces relation :
+                $carId = $_POST['id'];
+                $annoncesService = new AnnoncesService();
+                $isOk = $annoncesService->deleteAnnonceCar(null, $carId);
+
+            }
+
             if ($isOk) {
                 $html = 'Voiture supprimée avec succès.';
             } else {
